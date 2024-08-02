@@ -12,3 +12,4 @@
 | [push_swap](https://github.com/LouAntonio/push_swap) | <img src="https://img.shields.io/badge/84%20%2F%20100-success"/> |
 
 </div>
+Ispired by [jotavare](https://github.com/jotavare)
