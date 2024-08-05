@@ -5,7 +5,7 @@
 This is the Core of the 42 journey, and it defines the base to the minimun habilities (human and techniqs). It takes so long as the student needs (but don't relax), and allows the students to learn C programming, and devellop simple softwares using classig algorithms, discover the acces to the file system, learn the UNIX process management.
 It also includes network architecture bases, system administration, OOP, and match more...
 > [!NOTE]  
-> The common Core devellop also soft skills as team work, rigor, puntuality
+> The common Core devellops also soft skills as team work, rigor, puntuality
 , responsability...
 
 ## PROJECTS
