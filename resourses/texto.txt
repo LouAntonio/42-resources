@@ -1,0 +1,47 @@
+-- Criação da base de dados
+CREATE DATABASE GestaoHospedaria;
+USE GestaoHospedaria;
+
+-- Tabela de quartos
+CREATE TABLE Quartos (
+    id_quarto INT AUTO_INCREMENT PRIMARY KEY,
+    numero_quarto VARCHAR(10) NOT NULL,
+    tipo VARCHAR(50),
+    status ENUM('Disponível', 'Reservado', 'Ocupado', 'Manutenção') DEFAULT 'Disponível',
+    preco_hora DECIMAL(10, 2) NOT NULL,
+    preco_diaria DECIMAL(10, 2) NOT NULL
+);
+
+-- Tabela de usuários do sistema
+CREATE TABLE Usuarios (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    senha_hash VARCHAR(255) NOT NULL,
+    tipo_usuario ENUM('Admin', 'Funcionario') DEFAULT 'Funcionario'
+);
+
+-- Tabela de logs para registrar mudanças no sistema (opcional, mas útil)
+CREATE TABLE Logs (
+    id_log INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT,
+    descricao TEXT NOT NULL,
+    data_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario) ON DELETE SET NULL
+);
+
+-- Tabela de reservas (caso o sistema cresça e inclua gestão de reservas)
+CREATE TABLE Reservas (
+    id_reserva INT AUTO_INCREMENT PRIMARY KEY,
+    id_quarto INT NOT NULL,
+    id_usuario INT,
+    nome_cliente VARCHAR(32) NOT NULL,
+    email_cliente VARCHAR(50) NOT NULL,
+    telefone_cliente VARCHAR(15) NOT NULL.
+    data_inicio DATETIME NOT NULL,
+    data_fim DATETIME NOT NULL,
+    valor_total DECIMAL(10, 2) NOT NULL,
+    status ENUM('Ativo', 'Cancelado', 'Usada')
+    FOREIGN KEY (id_quarto) REFERENCES Quartos(id_quarto),
+    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario)
+);
